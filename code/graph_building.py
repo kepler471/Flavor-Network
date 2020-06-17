@@ -11,8 +11,7 @@ comp = pd.read_csv('data/comp_info.tsv', index_col=0, sep='\t')
 ingr_comp = pd.read_csv('data/ingr_comp.tsv', sep='\t')
 ingr = pd.read_csv('data/ingr_info.tsv', index_col=0, sep='\t')
 # edge between ingredients
-df = pd.read_csv('data/srep00196-s2.csv', skiprows=4, header=None)
-df.columns = ['ingr1', 'ingr2', 'shared']
+df = pd.read_csv('data/srep00196-s2.csv')
 # merge with 'ingr' to get category information
 df_category = pd.merge(df, ingr, left_on='ingr1', right_on='ingredient name').drop('ingredient name', axis=1)
 
