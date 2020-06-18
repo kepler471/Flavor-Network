@@ -16,7 +16,7 @@ df = pd.read_csv('data/srep00196-s2.csv')
 df_category = pd.merge(df, ingr, left_on='ingr1', right_on='ingredient name').drop('ingredient name', axis=1)
 
 # create ingredient lists from recipes
-recipe = pd.read_csv('data/srep00196-s3.csv', skiprows=3, sep='\t')
+recipe = pd.read_csv('data/srep00196-s3.csv', sep='\t')
 recipe.columns = ['recipes']
 # create ingredients column with the first label for cuisine
 recipe['ingredients'] = recipe['recipes'].apply(lambda x: x.split(',')[1:])
