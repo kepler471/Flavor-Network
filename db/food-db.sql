@@ -13,29 +13,29 @@ CREATE TABLE "public"."backbone" (
 
 CREATE TABLE "public"."comp_info" (
     "id" int4 NOT NULL,
-    "compound_name" bpchar(100),
-    "cas_number" bpchar(100)
+    "compound_name" bpchar(100) NOT NULL,
+    "cas_number" bpchar(100) NOT NULL
 );
-\copy comp_info(id, Compound_name, CAS_number) FROM '../data/comp_info_converted.csv' DELIMITER ',' CSV HEADER;
+\copy comp_info(id, compound_name, cas_number) FROM '../data/comp_info_converted.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE "public"."ingr_comp" (
-    "ingredient_id" int4,
-    "compound_id" int4
+    "ingredient_id" int4 NOT NULL,
+    "compound_id" int4 NOT NULL
 );
-\copy ingr_comp(id, Compound_name, CAS_number) FROM '../data/ingr_comp_converted.csv' DELIMITER ',' CSV HEADER;
+\copy ingr_comp(ingredient_id, compound_id) FROM '../data/ingr_comp_converted.csv' DELIMITER ',' CSV HEADER;
 
 CREATE TABLE "public"."ingr_info_converted" (
     "id" int4 NOT NULL,
-    "ingredient_name" bpchar(100),
-    "category" text
+    "ingredient_name" bpchar(100) NOT NULL,
+    "category" text NOT NULL
 );
 \copy ingr_info_converted(id, ingredient_name, category) FROM '../data/ingr_info_converted.csv' DELIMITER ',' CSV HEADER;
 
 
 CREATE TABLE "public"."srep-s2" (
-    "ingredient_1" bpchar(100),
-    "ingredient_2" bpchar(100),
-    "shared" int4,
+    "ingredient_1" bpchar(100) NOT NULL,
+    "ingredient_2" bpchar(100) NOT NULL,
+    "shared" int4 NOT NULL,
     "uuid" uuid DEFAULT uuid_generate_v4()
 );
 \copy "srep-s2"(ingredient_1, ingredient_2, shared) FROM '../data/srep00196-s2.csv' DELIMITER ',' CSV HEADER;
