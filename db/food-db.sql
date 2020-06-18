@@ -16,20 +16,20 @@ CREATE TABLE IF NOT EXISTS  "public"."comp_info" (
     "compound_name" bpchar(100) NOT NULL,
     "cas_number" bpchar(100) NOT NULL
 );
-\copy comp_info(id, compound_name, cas_number) FROM '../data/comp_info_converted.csv' DELIMITER ',' CSV HEADER;
+\copy comp_info(id, compound_name, cas_number) FROM '../data/comp_info.tsv' DELIMITER E'\t' CSV HEADER;
 
 CREATE TABLE IF NOT EXISTS  "public"."ingr_comp" (
     "ingredient_id" int4 NOT NULL,
     "compound_id" int4 NOT NULL
 );
-\copy ingr_comp(ingredient_id, compound_id) FROM '../data/ingr_comp_converted.csv' DELIMITER ',' CSV HEADER;
+\copy ingr_comp(ingredient_id, compound_id) FROM '../data/ingr_comp.tsv' DELIMITER E'\t' CSV HEADER;
 
 CREATE TABLE IF NOT EXISTS  "public"."ingr_info_converted" (
     "id" int4 NOT NULL,
     "ingredient_name" bpchar(100) NOT NULL,
     "category" text NOT NULL
 );
-\copy ingr_info_converted(id, ingredient_name, category) FROM '../data/ingr_info_converted.csv' DELIMITER ',' CSV HEADER;
+\copy ingr_info_converted(id, ingredient_name, category) FROM '../data/ingr_info.tsv' DELIMITER E'\t' CSV HEADER;
 
 
 CREATE TABLE IF NOT EXISTS  "public"."srep-s2" (
